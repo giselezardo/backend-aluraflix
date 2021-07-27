@@ -8,8 +8,7 @@ public class AluraflixApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AluraflixApplication.class, args);
-		ModuloConexao c = new ModuloConexao();
-		c.getConexao();
+
 	}
 
 }
