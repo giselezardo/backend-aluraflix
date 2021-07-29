@@ -42,10 +42,10 @@ public class VideoController {
 
     }
 
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity<VideoDto> deletarVideo(@PathVariable Integer id){
+        videoRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 
-//    @DeleteMapping("/aluraflix/video/{id}")
-//    public ResponseEntity<Video> deletarVideo(@PathVariable Integer id){
-//        videoService.deletar(id);
-//        return ResponseEntity.noContent().build();
-//    }
 }
