@@ -24,7 +24,11 @@ public class VideoController {
     @GetMapping(path = "/{id}")
     public ResponseEntity <VideoDto> buscaPorId (@PathVariable Integer id){
         Optional<Video> video = videoRepository.findById(id);
-        return ResponseEntity.ok(new VideoDto(video.get()));
+
+        if (video.isPresent()) {
+            return ResponseEntity.ok(new VideoDto(video.get()));
+        }
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping
@@ -44,8 +48,13 @@ public class VideoController {
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<VideoDto> deletarVideo(@PathVariable Integer id){
-        videoRepository.deleteById(id);
-        return ResponseEntity.ok().build();
+        Optional<Video> video = videoRepository.findById(id);
+
+        if (video.isPresent()){
+            videoRepository.deleteById(id);
+            return ResponseEntity.ok().build();
+        }
+        return ResponseEntity.notFound().build();
     }
 
 }
