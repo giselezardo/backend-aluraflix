@@ -21,8 +21,8 @@ public class VideoDto {
     public VideoDto (Video video) {
         this.id = video.getId();
         this.titulo = video.getTitulo();
-        this.descricao = video.descricao;
-        this.url = video.url;
+        this.descricao = video.getDescricao();
+        this.url = video.getUrl();
     }
 
     public static List<VideoDto> converter(List<Video> video){

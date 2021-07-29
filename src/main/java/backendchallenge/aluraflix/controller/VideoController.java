@@ -1,6 +1,7 @@
 package backendchallenge.aluraflix.controller;
 
 import backendchallenge.aluraflix.controller.dto.VideoDto;
+import backendchallenge.aluraflix.controller.form.AtualizaVideoForm;
 import backendchallenge.aluraflix.controller.form.VideoForm;
 import backendchallenge.aluraflix.model.Video;
 import backendchallenge.aluraflix.repository.VideoRepository;
@@ -9,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -38,12 +41,23 @@ public class VideoController {
     }
 
     @PostMapping
-    public ResponseEntity<VideoDto> cadastraVideo(@RequestBody VideoForm videoForm, UriComponentsBuilder uriBuilder){
+    public ResponseEntity<VideoDto> cadastraVideo(@RequestBody @Valid VideoForm videoForm, UriComponentsBuilder uriBuilder){
         Video video = videoForm.converter();
         videoRepository.save(video);
         URI uri = uriBuilder.path("/aluraflix/video/{id}").buildAndExpand(video.getId()).toUri();
         return ResponseEntity.created(uri).body(new VideoDto(video));
 
+    }
+
+    @PutMapping(path = "/{id}")
+    @Transactional
+    public ResponseEntity<VideoDto> atualizaVideo(@PathVariable Integer id, @RequestBody @Valid AtualizaVideoForm videoAtualizadoForm){
+        Optional <Video> videoProcurado = videoRepository.findById(id);
+         if (videoProcurado.isPresent()){
+             Video video = videoAtualizadoForm.atualizar(id, videoRepository);
+             return ResponseEntity.ok(new VideoDto(video));
+         }
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping(path = "/{id}")

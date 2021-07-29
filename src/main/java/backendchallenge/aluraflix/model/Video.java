@@ -1,10 +1,7 @@
 package backendchallenge.aluraflix.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Optional;
@@ -13,6 +10,7 @@ import java.util.Optional;
 @NoArgsConstructor
 @Builder
 @Getter
+@Setter
 @Entity(name = "video")
 public class Video {
 
