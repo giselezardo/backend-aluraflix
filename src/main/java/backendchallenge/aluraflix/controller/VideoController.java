@@ -1,47 +1,51 @@
 package backendchallenge.aluraflix.controller;
 
+import backendchallenge.aluraflix.controller.dto.VideoDto;
+import backendchallenge.aluraflix.controller.form.VideoForm;
 import backendchallenge.aluraflix.model.Video;
-import backendchallenge.aluraflix.service.VideoService;
+import backendchallenge.aluraflix.repository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping(path = "/aluraflix/video")
 public class VideoController {
 
     @Autowired
-    VideoService videoService;
+    private VideoRepository videoRepository;
+
 
     @GetMapping(path = "/aluraflix/video/{id}")
-    public ResponseEntity <Video> buscaPorId(@PathVariable Integer id){
-        Video video = videoService.buscarPorId(id);
-        return ResponseEntity.ok().body(video);
+    public ResponseEntity <VideoDto> buscaPorId (@PathVariable Integer id){
+        Optional<Video> video = videoRepository.findById(id);
+        return ResponseEntity.ok(new VideoDto(video.get()));
     }
 
-    @GetMapping(path = "/aluraflix/video")
-    public ResponseEntity <?> listaVideo () {
-        List<Video> listaVideo = videoService.listar();
-        return ResponseEntity.ok().body(listaVideo);
+    @GetMapping
+    public List <VideoDto> listaVideo () {
+        List<Video> video = videoRepository.findAll();
+        return VideoDto.converter(video);
     }
 
-    @PostMapping(path = "/aluraflix/video/inserir")
-    public ResponseEntity <Void> inserirVideo (@RequestBody Video video) {
-        video = videoService.inserir(video);
-        URI uri = ServletUriComponentsBuilder
-                .fromCurrentRequest()
-                .path("/{id}")
-                .buildAndExpand(video.getId())
-                .toUri();
-        return ResponseEntity.created(uri).build();
+    @PostMapping
+    public ResponseEntity<VideoDto> cadastraVideo(@RequestBody VideoForm videoForm, UriComponentsBuilder uriBuilder){
+        Video video = videoForm.converter();
+        videoRepository.save(video);
+        URI uri = uriBuilder.path("/aluraflix/video/{id}").buildAndExpand(video.getId()).toUri();
+        return ResponseEntity.created(uri).body(new VideoDto(video));
+
     }
 
-    @DeleteMapping("/aluraflix/video/{id}")
-    public ResponseEntity<Video> deletarVideo(@PathVariable Integer id){
-        videoService.deletar(id);
-        return ResponseEntity.noContent().build();
-    }
+
+//    @DeleteMapping("/aluraflix/video/{id}")
+//    public ResponseEntity<Video> deletarVideo(@PathVariable Integer id){
+//        videoService.deletar(id);
+//        return ResponseEntity.noContent().build();
+//    }
 }

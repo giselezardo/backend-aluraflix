@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Optional;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,6 +29,5 @@ public class Video {
 
     @Column(nullable = false)
     public String url;
-
 
 }
