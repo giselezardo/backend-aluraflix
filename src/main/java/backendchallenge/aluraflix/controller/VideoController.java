@@ -21,7 +21,7 @@ public class VideoController {
     private VideoRepository videoRepository;
 
 
-    @GetMapping(path = "/aluraflix/video/{id}")
+    @GetMapping(path = "/{id}")
     public ResponseEntity <VideoDto> buscaPorId (@PathVariable Integer id){
         Optional<Video> video = videoRepository.findById(id);
         return ResponseEntity.ok(new VideoDto(video.get()));
