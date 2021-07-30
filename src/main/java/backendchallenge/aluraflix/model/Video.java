@@ -28,4 +28,7 @@ public class Video {
     @Column(nullable = false)
     public String url;
 
+    @ManyToOne
+    Categoria categoria;
+
 }
