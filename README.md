@@ -9,8 +9,7 @@
 >- API com rotas implementadas segundo o padrão REST;
 >- Validações feitas conforme as regras de negócio;
 >- Implementação de base de dados para persistência das informações;
->- Serviço de autenticação para acesso às rotas GET, POST, PUT e DELETE.
-
+>- Serviço de autenticação para acesso às rotas GET, POST, PUT e DELETE.  
 >Temos um período de tempo de 4 semanas para desenvolver o projeto.
 
 ### :computer: Tecnologias utilizadas:
