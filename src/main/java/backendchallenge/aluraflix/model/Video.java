@@ -4,7 +4,6 @@ package backendchallenge.aluraflix.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.Optional;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,6 +28,6 @@ public class Video {
     public String url;
 
     @ManyToOne
-    Categoria categoria;
+    public Categoria categoria;
 
 }

@@ -3,7 +3,6 @@ package backendchallenge.aluraflix.model;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Table(name = "Categoria")
@@ -27,5 +26,5 @@ public class Categoria {
 
     @OneToMany(mappedBy = "categoria")
     private List<Video> video;
-
+    
 }
