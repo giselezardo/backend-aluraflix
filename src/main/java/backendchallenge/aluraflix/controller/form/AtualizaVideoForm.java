@@ -1,6 +1,6 @@
 package backendchallenge.aluraflix.controller.form;
 
-import backendchallenge.aluraflix.model.Video;
+import backendchallenge.aluraflix.model.Videos;
 import backendchallenge.aluraflix.repository.VideoRepository;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,10 +17,10 @@ public class AtualizaVideoForm {
     @NotBlank
     public String descricao;
 
-    public Video atualizar(Integer id, VideoRepository videoRepository) {
-        Video video = videoRepository.getById(id);
-        video.setTitulo(this.titulo);
-        video.setDescricao(this.descricao);
-        return video;
+    public Videos atualizar(Integer id, VideoRepository videoRepository) {
+        Videos videos = videoRepository.getById(id);
+        videos.setTitulo(this.titulo);
+        videos.setDescricao(this.descricao);
+        return videos;
     }
 }

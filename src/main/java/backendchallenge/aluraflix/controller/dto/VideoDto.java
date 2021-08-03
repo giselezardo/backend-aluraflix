@@ -1,6 +1,6 @@
 package backendchallenge.aluraflix.controller.dto;
 
-import backendchallenge.aluraflix.model.Video;
+import backendchallenge.aluraflix.model.Videos;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,14 +18,14 @@ public class VideoDto {
     public String descricao;
     public String url;
 
-    public VideoDto (Video video) {
-        this.id = video.getId();
-        this.titulo = video.getTitulo();
-        this.descricao = video.getDescricao();
-        this.url = video.getUrl();
+    public VideoDto (Videos videos) {
+        this.id = videos.getId();
+        this.titulo = videos.getTitulo();
+        this.descricao = videos.getDescricao();
+        this.url = videos.getUrl();
     }
 
-    public static List<VideoDto> converter(List<Video> video){
-        return video.stream().map(VideoDto::new).collect(Collectors.toList());
+    public static List<VideoDto> converter(List<Videos> videos){
+        return videos.stream().map(VideoDto::new).collect(Collectors.toList());
     }
 }

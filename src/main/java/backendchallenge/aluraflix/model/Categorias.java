@@ -5,14 +5,14 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.List;
 
-@Table(name = "Categoria")
+@Table(name = "Categorias")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter
 @Setter
 @Entity
-public class Categoria {
+public class Categorias {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,9 @@ public class Categoria {
     @Column(nullable = false)
     public String corCategoria;
 
-    @OneToMany(mappedBy = "categoria")
-    private List<Video> video;
-    
+    @OneToMany(mappedBy = "categorias")
+    private List<Videos> videos;
+
+    public Categorias(Integer idCategoria, String tituloCategoria, String corCategoria) {
+    }
 }

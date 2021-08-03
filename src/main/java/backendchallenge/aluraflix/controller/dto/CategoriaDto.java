@@ -1,6 +1,6 @@
 package backendchallenge.aluraflix.controller.dto;
 
-import backendchallenge.aluraflix.model.Categoria;
+import backendchallenge.aluraflix.model.Categorias;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,13 +15,13 @@ public class CategoriaDto {
     public String tituloCategoria;
     public String corCategoria;
 
-    public CategoriaDto(Categoria categoria) {
-        this.idCategoria = categoria.getIdCategoria();
-        this.tituloCategoria = categoria.getTituloCategoria();
-        this.corCategoria = categoria.getCorCategoria();
+    public CategoriaDto(Categorias categorias) {
+        this.idCategoria = categorias.getIdCategoria();
+        this.tituloCategoria = categorias.getTituloCategoria();
+        this.corCategoria = categorias.getCorCategoria();
     }
 
-    public static List<CategoriaDto> converter(List<Categoria> categoria) {
-        return categoria.stream().map(CategoriaDto::new).collect(Collectors.toList());
+    public static List<CategoriaDto> converter(List<Categorias> categorias) {
+        return categorias.stream().map(CategoriaDto::new).collect(Collectors.toList());
     }
 }

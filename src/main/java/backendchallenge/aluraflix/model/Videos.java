@@ -10,8 +10,8 @@ import javax.persistence.*;
 @Builder
 @Getter
 @Setter
-@Entity(name = "video")
-public class Video {
+@Entity(name = "videos")
+public class Videos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,6 @@ public class Video {
     public String url;
 
     @ManyToOne
-    public Categoria categoria;
+    public Categorias categorias;
 
 }

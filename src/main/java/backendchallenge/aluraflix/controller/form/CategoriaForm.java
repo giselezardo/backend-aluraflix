@@ -1,7 +1,6 @@
 package backendchallenge.aluraflix.controller.form;
 
-import backendchallenge.aluraflix.model.Categoria;
-import backendchallenge.aluraflix.model.Video;
+import backendchallenge.aluraflix.model.Categorias;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,6 +11,7 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class CategoriaForm {
 
     public Integer idCategoria;
@@ -22,5 +22,7 @@ public class CategoriaForm {
     @NotBlank
     public String corCategoria;
 
-
+    public Categorias converter(){
+        return new Categorias (idCategoria,tituloCategoria,corCategoria);
+    }
 }
