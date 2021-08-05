@@ -1,7 +1,7 @@
 package backendchallenge.aluraflix.controller.form;
 
-import backendchallenge.aluraflix.model.Categorias;
-import backendchallenge.aluraflix.model.Videos;
+import backendchallenge.aluraflix.model.Categoria;
+import backendchallenge.aluraflix.model.Video;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,11 +28,10 @@ public class VideoForm {
     @NotBlank
     public String url;
 
-    @NotBlank
-    public Categorias categorias;
+    public Categoria categoria;
 
-    public Videos converter() {
-        return new Videos(id, titulo, descricao, url, categorias);
+    public Video converter() {
+        return new Video(titulo, descricao, url, categoria);
     }
 
 }

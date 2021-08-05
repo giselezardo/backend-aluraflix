@@ -1,27 +1,47 @@
 package backendchallenge.aluraflix.controller.dto;
 
-import backendchallenge.aluraflix.model.Categorias;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import backendchallenge.aluraflix.model.Categoria;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter
-@NoArgsConstructor
 public class CategoriaDto {
 
-    public Integer idCategoria;
-    public String tituloCategoria;
-    public String corCategoria;
+    private Integer idCategoria;
+    private String tituloCategoria;
+    private String corCategoria;
 
-    public CategoriaDto(Categorias categorias) {
-        this.idCategoria = categorias.getIdCategoria();
-        this.tituloCategoria = categorias.getTituloCategoria();
-        this.corCategoria = categorias.getCorCategoria();
+    public CategoriaDto(Categoria categoria) {
+        this.idCategoria = categoria.getIdCategoria();
+        this.tituloCategoria = categoria.getTituloCategoria();
+        this.corCategoria = categoria.getCorCategoria();
     }
 
-    public static List<CategoriaDto> converter(List<Categorias> categorias) {
-        return categorias.stream().map(CategoriaDto::new).collect(Collectors.toList());
+    public static List<CategoriaDto> converterParaDto(List <Categoria> categoria){
+        return categoria.stream().map(CategoriaDto::new).collect(Collectors.toList());
+    }
+
+    public Integer getIdCategoria() {
+        return idCategoria;
+    }
+
+    public String getTituloCategoria() {
+        return tituloCategoria;
+    }
+
+    public String getCorCategoria() {
+        return corCategoria;
+    }
+
+    public void setIdCategoria(Integer idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    public void setTituloCategoria(String tituloCategoria) {
+        this.tituloCategoria = tituloCategoria;
+    }
+
+    public void setCorCategoria(String corCategoria) {
+        this.corCategoria = corCategoria;
     }
 }

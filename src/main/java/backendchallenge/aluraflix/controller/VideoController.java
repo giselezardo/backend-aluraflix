@@ -3,7 +3,7 @@ package backendchallenge.aluraflix.controller;
 import backendchallenge.aluraflix.controller.dto.VideoDto;
 import backendchallenge.aluraflix.controller.form.AtualizaVideoForm;
 import backendchallenge.aluraflix.controller.form.VideoForm;
-import backendchallenge.aluraflix.model.Videos;
+import backendchallenge.aluraflix.model.Video;
 import backendchallenge.aluraflix.repository.VideoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +26,7 @@ public class VideoController {
 
     @GetMapping(path = "/{id}")
     public ResponseEntity <VideoDto> buscaPorId (@PathVariable Integer id){
-        Optional<Videos> video = videoRepository.findById(id);
+        Optional<Video> video = videoRepository.findById(id);
 
         if (video.isPresent()) {
             return ResponseEntity.ok(new VideoDto(video.get()));
@@ -36,33 +36,33 @@ public class VideoController {
 
     @GetMapping
     public List <VideoDto> listaVideos () {
-        List<Videos> videos = videoRepository.findAll();
+        List<Video> videos = videoRepository.findAll();
         return VideoDto.converter(videos);
     }
 
     @PostMapping
     public ResponseEntity<VideoDto> cadastraVideo (@RequestBody @Valid VideoForm videoForm, UriComponentsBuilder uriBuilder){
-        Videos videos = videoForm.converter();
-        videoRepository.save(videos);
-        URI uri = uriBuilder.path("videos/{id}").buildAndExpand(videos.getId()).toUri();
-        return ResponseEntity.created(uri).body(new VideoDto(videos));
+        Video video = videoForm.converter();
+        videoRepository.save(video);
+        URI uri = uriBuilder.path("videos/{id}").buildAndExpand(video.getId()).toUri();
+        return ResponseEntity.created(uri).body(new VideoDto(video));
 
     }
 
     @PutMapping(path = "/{id}")
     @Transactional
     public ResponseEntity<VideoDto> atualizaVideo (@PathVariable Integer id, @RequestBody @Valid AtualizaVideoForm videoAtualizadoForm){
-        Optional <Videos> videoProcurado = videoRepository.findById(id);
+        Optional <Video> videoProcurado = videoRepository.findById(id);
          if (videoProcurado.isPresent()){
-             Videos videos = videoAtualizadoForm.atualizar(id, videoRepository);
-             return ResponseEntity.ok(new VideoDto(videos));
+             Video video = videoAtualizadoForm.atualizar(id, videoRepository);
+             return ResponseEntity.ok(new VideoDto(video));
          }
         return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<VideoDto> deletarVideo(@PathVariable Integer id){
-        Optional<Videos> video = videoRepository.findById(id);
+        Optional<Video> video = videoRepository.findById(id);
 
         if (video.isPresent()){
             videoRepository.deleteById(id);

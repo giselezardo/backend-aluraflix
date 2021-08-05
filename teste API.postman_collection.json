@@ -1,31 +1,30 @@
 {
 	"info": {
-		"_postman_id": "0c89ad67-3303-4801-9cab-b816244b400a",
+		"_postman_id": "aceae9f0-2d65-4126-89d8-956887c8c1d4",
 		"name": "teste API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "localhost:8080/aluraflix/video",
+			"name": "localhost:8080/videos",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/aluraflix/video",
+					"raw": "localhost:8080/videos",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"aluraflix",
-						"video"
+						"videos"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:8080/aluraflix/video",
+			"name": "localhost:8080/videos",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -37,50 +36,23 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"titulo\":\"4-Hour Study With Me\",\r\n    \"descricao\":\"Havent done a classical music study with me for a long time. Enjoy this one folks!\",\r\n    \"url\":\"https://www.youtube.com/watch?v=lq9bA39t30I\"\r\n}"
+					"raw": "{\r\n    \"titulo\": \"4-Hour Study With Me 2\",\r\n    \"descricao\": \"Havent done a classical music study with me for a long time. Enjoy this one folks!\",\r\n    \"url\": \"https://www.youtube.com/watch?v=lq9bA39t30I\"\r\n}"
 				},
 				"url": {
-					"raw": "localhost:8080/aluraflix/video",
+					"raw": "localhost:8080/videos",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"aluraflix",
-						"video"
+						"videos"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "localhost:8080/aluraflix/video/4",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "localhost:8080/aluraflix/video/4?",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"aluraflix",
-						"video",
-						"4"
-					],
-					"query": [
-						{
-							"key": "",
-							"value": null
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "localhost:8080/aluraflix/video/4",
+			"name": "localhost:8080/videos/7",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -92,18 +64,36 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"titulo\": \"4-Hour Study With Me UPDATE\",\r\n    \"descricao\": \"UPDATE Havent done a classical music study with me for a long time. Enjoy this one folks!\"\r\n}"
+					"raw": "{\r\n    \"titulo\": \"4-Hour Study With Me 2 UPDATE\",\r\n    \"descricao\": \"UPDATE Havent done a classical music study with me for a long time. Enjoy this one folks!\"\r\n}"
 				},
 				"url": {
-					"raw": "localhost:8080/aluraflix/video/4",
+					"raw": "localhost:8080/videos/7",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"aluraflix",
-						"video",
-						"4"
+						"videos",
+						"7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:8080/videos/7",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/videos/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"videos",
+						"7"
 					]
 				}
 			},
