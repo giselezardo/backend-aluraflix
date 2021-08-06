@@ -1,6 +1,8 @@
 package backendchallenge.aluraflix.controller;
 
+import backendchallenge.aluraflix.controller.dto.CategoriaDto;
 import backendchallenge.aluraflix.controller.dto.VideoDto;
+import backendchallenge.aluraflix.controller.form.AtualizaCategoriaForm;
 import backendchallenge.aluraflix.controller.form.AtualizaVideoForm;
 import backendchallenge.aluraflix.controller.form.VideoForm;
 import backendchallenge.aluraflix.model.Video;
@@ -70,5 +72,6 @@ public class VideoController {
         }
         return ResponseEntity.notFound().build();
     }
+
 
 }

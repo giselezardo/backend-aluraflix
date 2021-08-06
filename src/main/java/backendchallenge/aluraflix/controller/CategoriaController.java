@@ -1,6 +1,7 @@
 package backendchallenge.aluraflix.controller;
 
 import backendchallenge.aluraflix.controller.dto.CategoriaDto;
+import backendchallenge.aluraflix.controller.form.AtualizaCategoriaForm;
 import backendchallenge.aluraflix.controller.form.CategoriaForm;
 import backendchallenge.aluraflix.model.Categoria;
 import backendchallenge.aluraflix.repository.CategoriaRepository;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -41,7 +43,13 @@ public class CategoriaController {
         Optional<Categoria> categoria = categoriaRepository.findById(idCategoria);
         return ResponseEntity.ok(new CategoriaDto(categoria.get()));
     }
-    
+
+    @PutMapping(path = "/{idCategoria}")
+    @Transactional
+    public ResponseEntity<CategoriaDto> atualizarCategoria(@PathVariable Integer idCategoria, @RequestBody @Valid AtualizaCategoriaForm categoriaAtualizadaForm){
+        Categoria categoria = categoriaAtualizadaForm.atualizar(idCategoria, categoriaRepository);
+        return ResponseEntity.ok(new CategoriaDto(categoria));
+    }
 
 
 }
