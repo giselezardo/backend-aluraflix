@@ -12,6 +12,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import javax.transaction.Transactional;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/categoria")
@@ -34,5 +35,13 @@ public class CategoriaController {
         URI uri = uriBuilder.path("/categoria/{id}").buildAndExpand(categoria.getIdCategoria()).toUri();
         return ResponseEntity.created(uri).body(new CategoriaDto(categoria));
     }
+
+    @GetMapping(path = "/{idCategoria}")
+    public ResponseEntity<CategoriaDto> buscaPorId(@PathVariable Integer idCategoria){
+        Optional<Categoria> categoria = categoriaRepository.findById(idCategoria);
+        return ResponseEntity.ok(new CategoriaDto(categoria.get()));
+    }
+    
+
 
 }
