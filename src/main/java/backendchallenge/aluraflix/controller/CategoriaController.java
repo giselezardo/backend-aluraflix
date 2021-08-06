@@ -50,6 +50,11 @@ public class CategoriaController {
         Categoria categoria = categoriaAtualizadaForm.atualizar(idCategoria, categoriaRepository);
         return ResponseEntity.ok(new CategoriaDto(categoria));
     }
+    @DeleteMapping(path = "/{idCategoria}")
+    public ResponseEntity removerCategoria(@PathVariable Integer idCategoria){
+        categoriaRepository.deleteById(idCategoria);
+        return ResponseEntity.ok().build();
+    }
 
 
 }
