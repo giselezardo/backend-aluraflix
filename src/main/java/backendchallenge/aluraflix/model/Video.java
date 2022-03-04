@@ -22,7 +22,8 @@ public class Video {
     @Column(nullable = false)
     private String url;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
+    @JoinColumn(name="ID_CATEGORIA")
     private Categoria categoria;
 
     public Video() {
@@ -32,7 +33,7 @@ public class Video {
         this.titulo = titulo;
         this.descricao = descricao;
         this.url = url;
-        this.categoria = categoria;
+        this.categoria = getCategoria();
     }
 
     public Video(Integer id, String titulo, String descricao, String url, Categoria categoria) {
@@ -40,7 +41,7 @@ public class Video {
         this.titulo = titulo;
         this.descricao = descricao;
         this.url = url;
-        this.categoria = categoria;
+        this.categoria = getCategoria();
     }
 
     public Integer getId() {

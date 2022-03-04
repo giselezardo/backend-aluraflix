@@ -17,16 +17,16 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 public class VideoForm {
 
-    public Integer id;
+    private Integer id;
 
     @NotBlank
-    public String titulo;
+    private String titulo;
 
     @NotBlank
-    public String descricao;
+    private String descricao;
 
     @NotBlank
-    public String url;
+    private String url;
 
     public Categoria categoria;
 

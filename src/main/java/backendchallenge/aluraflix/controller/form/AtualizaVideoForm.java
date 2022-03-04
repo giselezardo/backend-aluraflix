@@ -12,10 +12,10 @@ import javax.validation.constraints.NotBlank;
 public class AtualizaVideoForm {
 
     @NotBlank
-    public String titulo;
+    private String titulo;
 
     @NotBlank
-    public String descricao;
+    private String descricao;
 
     public Video atualizar(Integer id, VideoRepository videoRepository) {
         Video video = videoRepository.getById(id);

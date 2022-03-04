@@ -1,8 +1,6 @@
 package backendchallenge.aluraflix.controller;
 
-import backendchallenge.aluraflix.controller.dto.CategoriaDto;
 import backendchallenge.aluraflix.controller.dto.VideoDto;
-import backendchallenge.aluraflix.controller.form.AtualizaCategoriaForm;
 import backendchallenge.aluraflix.controller.form.AtualizaVideoForm;
 import backendchallenge.aluraflix.controller.form.VideoForm;
 import backendchallenge.aluraflix.model.Video;
@@ -30,10 +28,7 @@ public class VideoController {
     public ResponseEntity <VideoDto> buscaPorId (@PathVariable Integer id){
         Optional<Video> video = videoRepository.findById(id);
 
-        if (video.isPresent()) {
-            return ResponseEntity.ok(new VideoDto(video.get()));
-        }
-        return ResponseEntity.notFound().build();
+        return video.map(value -> ResponseEntity.ok(new VideoDto(value))).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping

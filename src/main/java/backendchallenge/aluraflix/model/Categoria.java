@@ -16,7 +16,7 @@ public class Categoria {
     @Column
     private String corCategoria;
 
-    @OneToMany (mappedBy = "categoria", fetch = FetchType.EAGER)
+    @OneToMany (mappedBy = "id")
     private List<Video> video;
 
     public Categoria() {
@@ -25,6 +25,13 @@ public class Categoria {
     public Categoria(String tituloCategoria, String corCategoria) {
         this.tituloCategoria = tituloCategoria;
         this.corCategoria = corCategoria;
+    }
+
+    public Categoria(Integer idCategoria, String tituloCategoria, String corCategoria, List<Video> video) {
+        this.idCategoria = idCategoria;
+        this.tituloCategoria = tituloCategoria;
+        this.corCategoria = corCategoria;
+        this.video = video;
     }
 
     public Integer getIdCategoria() {
