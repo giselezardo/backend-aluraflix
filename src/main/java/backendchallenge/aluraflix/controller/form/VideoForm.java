@@ -2,22 +2,20 @@ package backendchallenge.aluraflix.controller.form;
 
 import backendchallenge.aluraflix.model.Categoria;
 import backendchallenge.aluraflix.model.Video;
+import backendchallenge.aluraflix.repository.CategoriaRepository;
+import backendchallenge.aluraflix.repository.VideoRepository;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
-//dados que chegam do cliente pra API
-
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class VideoForm {
 
-    private Integer id;
+    private Integer idCategoria;
 
     @NotBlank
     private String titulo;
@@ -28,9 +26,8 @@ public class VideoForm {
     @NotBlank
     private String url;
 
-    public Categoria categoria;
-
-    public Video converter() {
+    public Video converter(VideoRepository videoRepository, CategoriaRepository categoriaRepository) {
+        Categoria categoria = categoriaRepository.findById(idCategoria).get();
         return new Video(titulo, descricao, url, categoria);
     }
 

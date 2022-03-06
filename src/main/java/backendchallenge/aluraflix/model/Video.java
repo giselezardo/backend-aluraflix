@@ -25,14 +25,14 @@ public class Video {
     private String url;
 
     @ManyToOne
-    @JoinColumn(name="ID_CATEGORIA")
+    @JoinColumn(name = "ID_CATEGORIA")
     private Categoria categoria;
 
     public Video(String titulo, String descricao, String url, Categoria categoria) {
         this.titulo = titulo;
         this.descricao = descricao;
         this.url = url;
-        this.categoria = getCategoria();
+        this.categoria = categoria;
     }
 
 }
