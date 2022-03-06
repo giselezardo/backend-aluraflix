@@ -1,10 +1,14 @@
 package backendchallenge.aluraflix.controller.dto;
 
 import backendchallenge.aluraflix.model.Categoria;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
+@AllArgsConstructor
+@Data
 public class CategoriaDto {
 
     private Integer idCategoria;
@@ -21,27 +25,4 @@ public class CategoriaDto {
         return categoria.stream().map(CategoriaDto::new).collect(Collectors.toList());
     }
 
-    public Integer getIdCategoria() {
-        return idCategoria;
-    }
-
-    public String getTituloCategoria() {
-        return tituloCategoria;
-    }
-
-    public String getCorCategoria() {
-        return corCategoria;
-    }
-
-    public void setIdCategoria(Integer idCategoria) {
-        this.idCategoria = idCategoria;
-    }
-
-    public void setTituloCategoria(String tituloCategoria) {
-        this.tituloCategoria = tituloCategoria;
-    }
-
-    public void setCorCategoria(String corCategoria) {
-        this.corCategoria = corCategoria;
-    }
 }

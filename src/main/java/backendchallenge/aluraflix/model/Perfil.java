@@ -17,4 +17,5 @@ public class Perfil implements GrantedAuthority {
     public String getAuthority() {
         return nome;
     }
+
 }

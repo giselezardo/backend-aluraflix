@@ -2,9 +2,11 @@ package backendchallenge.aluraflix.controller.form;
 
 import backendchallenge.aluraflix.model.Categoria;
 import backendchallenge.aluraflix.repository.CategoriaRepository;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 
+@Data
 public class AtualizaCategoriaForm {
 
     @NotBlank
@@ -12,22 +14,6 @@ public class AtualizaCategoriaForm {
 
     @NotBlank
     private String corCategoria;
-
-    public String getTituloCategoria() {
-        return tituloCategoria;
-    }
-
-    public void setTituloCategoria(String tituloCategoria) {
-        this.tituloCategoria = tituloCategoria;
-    }
-
-    public String getCorCategoria() {
-        return corCategoria;
-    }
-
-    public void setCorCategoria(String corCategoria) {
-        this.corCategoria = corCategoria;
-    }
 
     public Categoria atualizar(Integer idCategoria, CategoriaRepository categoriaRepository) {
         Categoria categoria = categoriaRepository.getById(idCategoria);
